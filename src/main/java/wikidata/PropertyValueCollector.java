@@ -38,10 +38,6 @@ public class PropertyValueCollector implements EntityDocumentProcessor {
 	public void processItemDocument(final ItemDocument itemDocument) {
 		// get id
 		final String itemId = itemDocument.getItemId().getId();
-		// FIXME: debug
-		if ("Q1209498".equals(itemId)) {
-			System.out.println(this.getClass().getSimpleName() + ": found item with id " + itemId + " and " + itemDocument.getStatementGroups().size() + " statements");
-		}
 
 		// check if we need to get the label for that id
 		final PropertyValue val = this.valuesWithMissingLabels.get(itemId);

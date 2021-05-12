@@ -13,7 +13,11 @@
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
+<<<<<<< HEAD
       <version>1.2.17</version>
+=======
+      <version>1.2.18</version>
+>>>>>>> d09ac40920d49f4db31236335ecb7cb91afc56db
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

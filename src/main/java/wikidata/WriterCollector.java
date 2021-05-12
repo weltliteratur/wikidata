@@ -97,7 +97,7 @@ public class WriterCollector implements EntityDocumentProcessor {
 		 */
 		if (itemDocument.hasStatement(PROPERTY_OCCUPATION) && itemDocument.hasStatement(PROPERTY_GNDID)) {
 			// extract id
-			final String itemId = itemDocument.getItemId().getId();
+			final String itemId = itemDocument.getEntityId().getId();
 			// FIXME: debug
 			if ("Q1209498".equals(itemId)) {
 				System.out.println(this.getClass().getSimpleName() + ": found item with id " + itemId + " and " + itemDocument.getStatementGroups().size() + " statements");

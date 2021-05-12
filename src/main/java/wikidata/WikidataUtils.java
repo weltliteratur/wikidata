@@ -5,13 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.wikidata.wdtk.datamodel.interfaces.EntityIdValue;
+import org.wikidata.wdtk.datamodel.interfaces.GlobeCoordinatesValue;
 import org.wikidata.wdtk.datamodel.interfaces.Statement;
 import org.wikidata.wdtk.datamodel.interfaces.StatementDocument;
 import org.wikidata.wdtk.datamodel.interfaces.StatementGroup;
+import org.wikidata.wdtk.datamodel.interfaces.StringValue;
+import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 import org.wikidata.wdtk.datamodel.interfaces.Value;
-import org.wikidata.wdtk.datamodel.json.jackson.datavalues.JacksonValueGlobeCoordinates;
-import org.wikidata.wdtk.datamodel.json.jackson.datavalues.JacksonValueString;
-import org.wikidata.wdtk.datamodel.json.jackson.datavalues.JacksonValueTime;
 
 public class WikidataUtils {
 
@@ -23,16 +23,16 @@ public class WikidataUtils {
 		if (val instanceof EntityIdValue) {
 			return ((EntityIdValue)val).getId();
 		}
-		if (val instanceof JacksonValueString) {
-			return ((JacksonValueString)val).getString();
+		if (val instanceof StringValue) {
+			return ((StringValue)val).getString();
 		}
-		if (val instanceof JacksonValueTime) {
-			final JacksonValueTime time = (JacksonValueTime)val;
+		if (val instanceof TimeValue) {
+			final TimeValue time = (TimeValue)val;
 			// FIXME: can we run into problems because we ignore the calendar?
 			return time.getYear() + "-" + TIME_FORMAT.format(time.getMonth()) + "-" + TIME_FORMAT.format(time.getDay()); 
 		}
-		if (val instanceof JacksonValueGlobeCoordinates) {
-			final JacksonValueGlobeCoordinates coord = (JacksonValueGlobeCoordinates)val;
+		if (val instanceof GlobeCoordinatesValue) {
+			final GlobeCoordinatesValue coord = (GlobeCoordinatesValue)val;
 			// should work for Elastic, see https://www.elastic.co/guide/en/elasticsearch/guide/current/lat-lon-formats.html
 			return coord.getLatitude() + ", " + coord.getLongitude(); 
 		}

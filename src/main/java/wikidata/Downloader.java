@@ -48,7 +48,7 @@ public class Downloader implements EntityDocumentProcessor {
 			try {
 				this.itemsWithPropertyCount++;
 
-				final ItemIdValue itemId = itemDocument.getItemId();
+				final ItemIdValue itemId = itemDocument.getEntityId();
 				final MonolingualTextValue label = itemDocument.getLabels().get("en");
 				if (label != null) {
 					buf.write(csvEscape(itemId.getId()) + "\t" + csvEscape(label.getText()));
